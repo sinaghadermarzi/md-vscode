@@ -9,7 +9,7 @@
         "${file}",
         "-o",
         "${fileDirname}/${fileBasenameNoExtension}.pdf",
-        "--pdf-engine=xelatex",
+        "--pdf-engine=tectonic",
         "--resource-path=${fileDirname}",
         "--template=${workspaceFolder}/.pandoc-templates/minimal-numbered.latex",
         "--highlight-style=tango",
