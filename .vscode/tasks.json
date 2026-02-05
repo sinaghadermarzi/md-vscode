@@ -12,8 +12,7 @@
         "--pdf-engine=tectonic",
         "--resource-path=${fileDirname}",
         "--template=${workspaceFolder}/.pandoc-templates/minimal-numbered.latex",
-        "--highlight-style=tango",
-        "--lua-filter=${workspaceFolder}/.pandoc-templates/remove-badges.lua"
+        "--highlight-style=tango"
       ],
       "group": {
         "kind": "build",
