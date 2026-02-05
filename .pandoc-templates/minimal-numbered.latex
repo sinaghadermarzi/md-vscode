@@ -36,6 +36,9 @@
 % Lists
 \providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
+% Math symbols (for checkboxes)
+\usepackage{amssymb}
+
 % Code
 $if(highlighting-macros)$
 $highlighting-macros$

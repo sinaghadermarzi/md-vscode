@@ -9,10 +9,11 @@
         "${file}",
         "-o",
         "${fileDirname}/${fileBasenameNoExtension}.pdf",
-        "--pdf-engine=tectonic",
+        "--pdf-engine=xelatex",
         "--resource-path=${fileDirname}",
         "--template=${workspaceFolder}/.pandoc-templates/minimal-numbered.latex",
-        "--highlight-style=tango"
+        "--highlight-style=tango",
+        "--lua-filter=${workspaceFolder}/.pandoc-templates/remove-badges.lua"
       ],
       "group": {
         "kind": "build",
