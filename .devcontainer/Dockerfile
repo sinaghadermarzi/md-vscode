@@ -5,8 +5,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     pandoc \
     fonts-open-sans \
     librsvg2-bin \
+    cargo \
+    libssl-dev \
+    libfontconfig1-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Install tectonic
-RUN curl --proto '=https' --tlsv1.2 -fsSL https://drop-sh.fullyjustified.net | sh \
-    && mv tectonic /usr/local/bin/
+# Install tectonic via cargo (works on ARM)
+RUN cargo install tectonic \
+    && mv /root/.cargo/bin/tectonic /usr/local/bin/
