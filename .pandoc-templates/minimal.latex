@@ -1,0 +1,59 @@
+\documentclass[12pt,a4paper]{article}
+
+% Open Sans font (scaled to match math)
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[scaled=0.90,default]{opensans}
+\else
+  \usepackage{fontspec}
+  \setmainfont{OpenSans}[Extension=.ttf,Scale=0.90,
+    UprightFont=*-Regular,BoldFont=*-Bold,
+    ItalicFont=*-Italic,BoldItalicFont=*-BoldItalic]
+\fi
+
+% Layout
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}\setstretch{1.25}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+\pagestyle{plain}
+
+% Links
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor={blue!60!black},urlcolor={blue!60!black}}
+
+% Headings (no numbers)
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bfseries}{}{0pt}{}
+\titleformat{\subsection}{\large\bfseries}{}{0pt}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{}{0pt}{}
+\titlespacing*{\section}{0pt}{1.5em}{0.5em}
+\titlespacing*{\subsection}{0pt}{1em}{0.3em}
+\titlespacing*{\subsubsection}{0pt}{0.8em}{0.2em}
+
+% Lists
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Code
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+% Tables
+\usepackage{longtable,booktabs,array}
+
+% Images
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\makeatother
+\setkeys{Gin}{width=\maxwidth,keepaspectratio}
+
+% Blockquotes
+\renewenvironment{quote}{\list{}{\leftmargin=1.5em}\item\relax\itshape}{\endlist}
+
+\begin{document}
+$body$
+\end{document}

@@ -1,0 +1,8 @@
+{
+  "markdown-pdf.convertOnSave": false,
+  "markdown-pdf.styles": [".vscode/markdown-pdf.css"],
+  "markdown-pdf.margin.top": "1.5cm",
+  "markdown-pdf.margin.bottom": "1.5cm",
+  "markdown-pdf.margin.left": "2cm",
+  "markdown-pdf.margin.right": "2cm"
+}

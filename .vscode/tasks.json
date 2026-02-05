@@ -1,0 +1,28 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Compile Markdown to PDF",
+      "type": "shell",
+      "command": "pandoc",
+      "args": [
+        "${file}",
+        "-o",
+        "${fileDirname}/${fileBasenameNoExtension}.pdf",
+        "--pdf-engine=tectonic",
+        "--resource-path=${fileDirname}",
+        "--template=${workspaceFolder}/.pandoc-templates/minimal-numbered.latex",
+        "--highlight-style=tango"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    }
+  ]
+}
