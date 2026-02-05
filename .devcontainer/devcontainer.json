@@ -11,7 +11,10 @@
       "extensions": [
         "yzhang.markdown-all-in-one",
         "DavidAnson.vscode-markdownlint",
-        "bierner.markdown-preview-github-styles"
+        "bierner.markdown-preview-github-styles",
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "James-Yu.latex-workshop"
       ]
     }
   }
