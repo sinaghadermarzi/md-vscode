@@ -21,6 +21,8 @@ def convert(md):
                 out.append('\\end{itemize}')
             else:
                 out.append('\\end{enumerate}')
+            if not list_stack:  # add blank after outermost list closes
+                out.append('')
     
     def close_all_lists():
         close_lists_to_level(0)
@@ -42,6 +44,7 @@ def convert(md):
         out.append('\\hline')
         out.append('\\end{tabular}')
         out.append('\\end{table}')
+        out.append('')
         table_rows = []
         in_table = False
     
@@ -119,12 +122,14 @@ def convert(md):
             out.append('\\centering')
             out.append(f'\\includegraphics[width=\\textwidth]{{{m.group(1)}}}')
             out.append('\\end{figure}')
+            out.append('')
             i += 1
             continue
         
-        # Empty line - don't close lists yet, just add blank
+        # Empty line - skip if inside a list
         if not line.strip():
-            out.append('')
+            if not list_stack:
+                out.append('')
             i += 1
             continue
         
@@ -135,7 +140,11 @@ def convert(md):
     
     close_all_lists()
     flush_table()
-    return '\n'.join(out)
+    
+    # Collapse 4+ blank lines into 2 blank lines (keep 2 blank lines before sections)
+    result = '\n'.join(out)
+    result = re.sub(r'\n{4,}', '\n\n\n', result)
+    return result.strip()
 
 def convert_inline(text):
     # Bold
