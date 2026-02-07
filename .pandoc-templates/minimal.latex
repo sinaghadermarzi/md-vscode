@@ -4,10 +4,10 @@
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
-  \usepackage[scaled=0.90,default]{opensans}
+  \usepackage[scaled=0.85,default]{opensans}
 \else
   \usepackage{fontspec}
-  \setmainfont{OpenSans}[Extension=.ttf,Scale=0.90,
+  \setmainfont{OpenSans}[Extension=.ttf,Scale=0.85,
     UprightFont=*-Regular,BoldFont=*-Bold,
     ItalicFont=*-Italic,BoldItalicFont=*-BoldItalic]
 \fi
@@ -36,6 +36,9 @@
 % Lists
 \providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
+% Math symbols (for checkboxes)
+\usepackage{amssymb}
+
 % Code
 $if(highlighting-macros)$
 $highlighting-macros$
@@ -43,13 +46,17 @@ $endif$
 
 % Tables
 \usepackage{longtable,booktabs,array}
+\usepackage{calc}
+\usepackage{etoolbox}
+\AtBeginEnvironment{longtable}{\footnotesize}
 
 % Images
 \usepackage{graphicx}
-\makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-\makeatother
-\setkeys{Gin}{width=\maxwidth,keepaspectratio}
+\usepackage{float}
+\usepackage{adjustbox}
+\floatplacement{figure}{H}
+% Pandoc 3.x compatibility - scale to fit within line width
+\newcommand{\pandocbounded}[1]{\adjustbox{max width=\linewidth}{#1}}
 
 % Blockquotes
 \renewenvironment{quote}{\list{}{\leftmargin=1.5em}\item\relax\itshape}{\endlist}
