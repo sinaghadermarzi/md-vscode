@@ -2,6 +2,21 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "Format Deep Research Markdown",
+      "type": "shell",
+      "command": "python3",
+      "args": [
+        "${workspaceFolder}/.vscode/format-deep-research.py",
+        "${file}",
+        "--inplace"
+      ],
+      "presentation": {
+        "reveal": "silent",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
       "label": "Compile Markdown to PDF",
       "type": "shell",
       "command": "pandoc",
