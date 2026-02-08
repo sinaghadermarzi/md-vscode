@@ -19,7 +19,7 @@
     {
       "label": "Compile Markdown to PDF",
       "type": "shell",
-      "command": "python3 ${workspaceFolder}/.pandoc-templates/md2tex.py ${file} > ${fileDirname}/${fileBasenameNoExtension}.tex && pandoc ${file} -o ${fileDirname}/${fileBasenameNoExtension}.pdf --pdf-engine=tectonic --resource-path=${fileDirname} --template=${workspaceFolder}/.pandoc-templates/minimal-numbered.latex --highlight-style=tango",
+      "command": "python3 ${workspaceFolder}/.pandoc-templates/md2tex.py ${file} > ${fileDirname}/${fileBasenameNoExtension}.tex; pandoc ${file} -o ${fileDirname}/${fileBasenameNoExtension}.pdf --pdf-engine=tectonic --resource-path=${fileDirname} --template=${workspaceFolder}/.pandoc-templates/minimal-numbered.latex --highlight-style=tango --from markdown+tex_math_single_backslash+tex_math_dollars",
       "group": {
         "kind": "build",
         "isDefault": true
