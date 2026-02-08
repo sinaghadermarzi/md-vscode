@@ -147,6 +147,17 @@ def convert(md):
     return result.strip()
 
 def convert_inline(text):
+    # Protect math expressions from formatting changes
+    math_placeholders = []
+    def save_math(m):
+        math_placeholders.append(m.group(0))
+        return f'\x00MATH{len(math_placeholders)-1}\x00'
+    # Save inline and display math
+    text = re.sub(r'\\\(.*?\\\)', save_math, text)
+    text = re.sub(r'\\\[.*?\\\]', save_math, text)
+    text = re.sub(r'\$\$.*?\$\$', save_math, text)
+    text = re.sub(r'\$[^$]+\$', save_math, text)
+    
     # Bold
     text = re.sub(r'\*\*(.+?)\*\*', r'\\textbf{\1}', text)
     text = re.sub(r'__(.+?)__', r'\\textbf{\1}', text)
@@ -157,6 +168,10 @@ def convert_inline(text):
     text = re.sub(r'`(.+?)`', r'\\texttt{\1}', text)
     # Escape %
     text = text.replace('%', '\\%')
+    
+    # Restore math expressions
+    for i, m in enumerate(math_placeholders):
+        text = text.replace(f'\x00MATH{i}\x00', m)
     return text
 
 if __name__ == '__main__':
